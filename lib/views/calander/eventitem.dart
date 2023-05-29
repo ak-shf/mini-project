@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mini_project/views/calander/model/event.dart';
 
-
-
 class EventItem extends StatelessWidget {
   final Event event;
   final Function() onDelete;
@@ -18,7 +16,7 @@ class EventItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       title: Text(
-        event.title,
+        event.title.toString(),
       ),
       subtitle: Text(
         event.date.toString(),

@@ -63,6 +63,7 @@ class _StaffDetailsState extends State<StaffDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+     
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(left: 30.0, right: 30),

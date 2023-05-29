@@ -43,6 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   _loadFirestoreEvents() async {
+    const today = DateTime.now;
     final firstDay = DateTime(_focusedDay.year, _focusedDay.month, 1);
     final lastDay = DateTime(_focusedDay.year, _focusedDay.month + 1, 0);
     _events = {};

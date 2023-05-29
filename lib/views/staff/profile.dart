@@ -17,6 +17,7 @@ class _MyProfileState extends State<MyProfile> {
   String phone = "";
   String address = "";
   String dateofbirth = "";
+  String image = "";
   // String? email;
   @override
   void initState() {
@@ -36,6 +37,7 @@ class _MyProfileState extends State<MyProfile> {
       address = (snap.data() as Map<String, dynamic>)['address'];
       phone = (snap.data() as Map<String, dynamic>)['mobile'];
       dateofbirth = (snap.data() as Map<String, dynamic>)['dateofbirth'];
+      image = (snap.data() as Map<String, dynamic>)['imageLink'];
     });
   }
 
@@ -47,6 +49,7 @@ class _MyProfileState extends State<MyProfile> {
     double radio = (sizeWidth - 50) / 2;
 
     return Scaffold(
+    
       body: Stack(
         //alignment: Alignment.center,
         children: [
@@ -61,7 +64,7 @@ class _MyProfileState extends State<MyProfile> {
               //   bottomLeft: Radius.circular(50),
               //   bottomRight: Radius.circular(50),
               // ),
-              color: Colors.blue,
+              color: Color.fromARGB(255, 39, 49, 244),
             ),
           ),
           Positioned(
@@ -117,14 +120,14 @@ class _MyProfileState extends State<MyProfile> {
                       const SizedBox(
                         height: 5,
                       ),
-                        Text(email,
+                      Text(email,
                           style: const TextStyle(
                               fontWeight: FontWeight.w500, fontSize: 11)),
                       const SizedBox(
                         height: 5,
                       ),
-                       Text(phone,
-                          style: TextStyle(
+                      Text(phone,
+                          style: const TextStyle(
                               fontWeight: FontWeight.w500, fontSize: 11)),
                       const SizedBox(
                         height: 40,
@@ -190,10 +193,9 @@ class _MyProfileState extends State<MyProfile> {
                   height: 50,
                   width: radio - 23,
                 ),
-                const CircleAvatar(
+                CircleAvatar(
                   radius: 50,
-                  backgroundImage: AssetImage(
-                      'assets/christopher-campbell-rDEOVtE7vOs-unsplash.jpg'),
+                  backgroundImage: NetworkImage(image),
                 ),
                 SizedBox(
                   // color: Colors.amber,

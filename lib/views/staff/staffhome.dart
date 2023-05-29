@@ -3,7 +3,6 @@ import 'dart:math';
 
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:mini_project/views/staff/studentlist.dart';
 import 'package:mini_project/views/staff/veruthe.dart';
 
@@ -41,17 +40,17 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: SpeedDial(
-        visible: true,
-        animatedIcon: AnimatedIcons.add_event,
-        label: const Text('edit'),
-        children: [
-          SpeedDialChild(child: const Icon(Icons.person), label: 'Student'),
-          SpeedDialChild(child: const Icon(Icons.person_2), label: 'Doctor'),
-          SpeedDialChild(child: const Icon(Icons.person_4), label: 'My Profile')
-        ],
-      ),
-      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+      // floatingActionButton: SpeedDial(
+      //   visible: true,
+      //   animatedIcon: AnimatedIcons.add_event,
+      //   label: const Text('edit'),
+      //   children: [
+      //     SpeedDialChild(child: const Icon(Icons.person), label: 'Student'),
+      //     SpeedDialChild(child: const Icon(Icons.person_2), label: 'Doctor'),
+      //     SpeedDialChild(child: const Icon(Icons.person_4), label: 'My Profile')
+      //   ],
+      // ),
+     
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

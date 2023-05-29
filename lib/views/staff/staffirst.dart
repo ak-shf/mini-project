@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -60,29 +61,28 @@ class _StaffFirstState extends State<StaffFirst> {
               padding: EdgeInsets.only(left: 10.0),
               child: Icon(
                 Icons.menu,
-                color: Colors.black,
+                color: Colors.white,
                 size: 35,
               ),
             )),
         automaticallyImplyLeading: true,
-        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+        backgroundColor: const Color.fromARGB(255, 39, 49, 244),
         title: const Text(
           'ashaNilayam',
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Colors.white),
         ),
-        actions: const [
-          Padding(
+        actions: [
+          const Padding(
             padding: EdgeInsets.all(10.0),
             child: Icon(
               Icons.notifications,
-              color: Colors.black,
+              color: Colors.white,
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(right: 15, top: 10, bottom: 10),
+            padding: const EdgeInsets.only(right: 15, top: 10, bottom: 10),
             child: CircleAvatar(
-              backgroundImage: AssetImage(
-                  'assets/christopher-campbell-rDEOVtE7vOs-unsplash.jpg'),
+              backgroundImage: NetworkImage(image),
             ),
           )
         ],
@@ -208,32 +208,32 @@ class _StaffFirstState extends State<StaffFirst> {
         ),
       ),
       body: pages[myIndex],
-      bottomNavigationBar: BottomNavigationBar(
-          onTap: (index) {
-            setState(() {
-              myIndex = index;
-            });
-          },
-          currentIndex: myIndex,
-          showUnselectedLabels: false,
-          selectedItemColor: const Color.fromARGB(255, 40, 39, 39),
-          unselectedItemColor: const Color.fromARGB(255, 153, 148, 148),
-          showSelectedLabels: false,
-          type: BottomNavigationBarType.shifting,
-          items: const [
-            BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: 'home',
-                backgroundColor: Color.fromARGB(255, 255, 255, 255)),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.calendar_month),
-                label: 'event',
-                backgroundColor: Color.fromARGB(255, 255, 255, 255)),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.person),
-                label: 'profile',
-                backgroundColor: Color.fromARGB(255, 255, 255, 255))
-          ]),
+      bottomNavigationBar: CurvedNavigationBar(
+        animationDuration: const Duration(milliseconds: 500),
+        backgroundColor: Colors.white,
+        height: 48,
+        // animationCurve: Curves.bounceIn,
+        color: const Color.fromARGB(255, 39, 49, 244),
+        onTap: (index) {
+          setState(() {
+            myIndex = index;
+          });
+        },
+        items: const [
+          Icon(
+            Icons.home,
+            color: Colors.white,
+          ),
+          Icon(
+            Icons.calendar_month,
+            color: Colors.white,
+          ),
+          Icon(
+            Icons.person,
+            color: Colors.white,
+          )
+        ],
+      ),
     );
   }
 }
