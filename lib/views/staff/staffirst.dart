@@ -2,7 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:mini_project/services/auth_services.dart';
 import 'package:mini_project/views/staff/calander.dart';
+import 'package:mini_project/views/staff/loginscreen.dart';
 
 import 'package:mini_project/views/staff/staffhome.dart';
 import 'package:mini_project/views/staff/profile.dart';
@@ -86,53 +88,124 @@ class _StaffFirstState extends State<StaffFirst> {
         ],
       ),
       drawer: Drawer(
+        width: 290,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+              topRight: Radius.circular(50), bottomRight: Radius.circular(50)),
+        ),
+        // width: 280,
         backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-        child: Container(
-            child: Column(
+        child: ListView(
           children: [
-            Container(
-              width: double.infinity,
-              height: 250,
-              color: Colors.black,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(
-                    height: 50,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: CircleAvatar(
-                      radius: 50,
-                      backgroundImage: NetworkImage(image),
+            SizedBox(
+              height: 180,
+              child: DrawerHeader(
+                padding: EdgeInsets.zero,
+                decoration: const BoxDecoration(color: Colors.black),
+                child: Column(
+                  children: [
+                    const SizedBox(
+                      height: 20,
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 20),
-                    child: Column(
+                    Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          name.toUpperCase(),
-                          style: const TextStyle(color: Colors.white),
+                        Row(
+                          children: [
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            CircleAvatar(
+                              radius: 45,
+                              backgroundImage: NetworkImage(image),
+                            ),
+                          ],
                         ),
-                        Text(
-                          email,
-                          style: const TextStyle(color: Colors.white),
+                        const SizedBox(
+                          height: 10,
                         ),
-                        Text(
-                          "+91-$phone",
-                          style: const TextStyle(
-                              color: Color.fromARGB(255, 255, 255, 255)),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 20),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                name.toUpperCase(),
+                                style: const TextStyle(color: Colors.white),
+                              ),
+
+                              Text(
+                                email,
+                                style: const TextStyle(color: Colors.white),
+                              ),
+                              // const SizedBox(
+                              //   height: 20,
+                              // ),
+                              // // Text(
+                              //   "+91-$phone",
+                              //   style: const TextStyle(
+                              //       color: Color.fromARGB(255, 255, 255, 255)),
+                              // ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
+                  ],
+                ),
+              ),
+            ),
+            const ListTile(
+              title: Text('CALANDER'),
+            ),
+            const Padding(
+              padding: EdgeInsets.only(left: 10, right: 10),
+              child: Divider(
+                height: 2,
+                // color: Colors.black,
+              ),
+            ),
+            const ListTile(
+              title: Text('ATTENDENCE'),
+            ),
+            const Padding(
+              padding: EdgeInsets.only(left: 10, right: 10),
+              child: Divider(
+                height: 2,
+                // color: Colors.black,
+              ),
+            ),
+            const ListTile(
+              title: Text('SELECT STUDENTS'),
+            ),
+            const Padding(
+              padding: EdgeInsets.only(left: 10, right: 10),
+              child: Divider(
+
+                  // color: Colors.black,
                   ),
-                ],
+            ),
+            ListTile(
+              title: const Text('LOG OUT'),
+              onTap: () async {
+                final res = await AuthServices.signout();
+                if (res == null) {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) => const SelectionPage()));
+                } else {
+                  ScaffoldMessenger.of(context)
+                      .showSnackBar(SnackBar(content: res));
+                }
+              },
+            ),
+            const Padding(
+              padding: EdgeInsets.only(left: 10, right: 10),
+              child: Divider(
+                height: 2,
               ),
             ),
           ],
-        )),
+        ),
       ),
       body: pages[myIndex],
       bottomNavigationBar: BottomNavigationBar(

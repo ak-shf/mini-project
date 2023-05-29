@@ -1,6 +1,11 @@
+import 'dart:async';
+import 'dart:math';
+
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:mini_project/views/staff/studentlist.dart';
+import 'package:mini_project/views/staff/veruthe.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -10,6 +15,29 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  List<List> services = [
+    [
+      'Add Student',
+      'assets/loginimage/undraw_flagged_2uty.png',
+    ],
+    [
+      'attendence',
+      'assets/loginimage/undraw_flagged_2uty.png',
+    ],
+    ['add', 'assets/loginimage/undraw_flagged_2uty.png'],
+  ];
+  int index = 0;
+  int selectervice = 0;
+  @override
+  void initState() {
+    super.initState();
+    Timer.periodic(const Duration(seconds: 1), (timer) {
+      setState(() {
+        selectervice = Random().nextInt(services.length);
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,67 +57,49 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           const SizedBox(
             height: 20,
-          )
-          // Padding(
-          //   padding: const EdgeInsets.only(left: 30, top: 15, right: 30),
-          //   child: Container(
-          //     height: 180,
-          //     width: 300,
-          //     decoration: const BoxDecoration(
-          //         color: Color.fromARGB(255, 255, 255, 255),
-          //         borderRadius: BorderRadius.all(Radius.circular(15))),
-          //     child: Column(
-          //       crossAxisAlignment: CrossAxisAlignment.center,
-          //       children: [
-          //         const SizedBox(
-          //           height: 15,
-          //         ),
-          //         Row(
-          //           mainAxisAlignment: MainAxisAlignment.center,
-          //           children: const [
-          //             CircleAvatar(
-          //               radius: 40,
-          //               backgroundImage: AssetImage(
-          //                   'assets/christopher-campbell-rDEOVtE7vOs-unsplash.jpg'),
-          //             ),
-          //           ],
-          //         ),
-          //         const SizedBox(
-          //           height: 10,
-          //         ),
-          //         const Text(
-          //           'ALEENA SAIN',
-          //           style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-          //         ),
-          //         const SizedBox(
-          //           height: 8,
-          //         ),
-          //         const Text(
-          //           'Assistant Professor: Computer Science',
-          //           style: TextStyle(
-          //               fontSize: 10,
-          //               fontWeight: FontWeight.w500,
-          //               color: Color.fromARGB(255, 155, 153, 153)),
-          //         ),
-          //         const SizedBox(
-          //           height: 4,
-          //         ),
-          //         const Text(
-          //           'class Teacher-cs2020-24',
-          //           style: TextStyle(
-          //               fontSize: 10,
-          //               fontWeight: FontWeight.w500,
-          //               color: Color.fromARGB(255, 158, 157, 157)),
-          //         )
-          //       ],
+          ),
+          Column(
+            children: [
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                height: MediaQuery.of(context).size.height * 0.15,
+                width: double.infinity,
+                child: GridView.builder(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 3,
+                            childAspectRatio: 1,
+                            crossAxisSpacing: 8,
+                            mainAxisSpacing: 8),
+                    itemCount: services.length,
+                    itemBuilder: (context, index) {
+                      return FadeInUp(
+                          child: serviceContainer(
+                              services[index][0], services[index][1], index));
+                    }),
+              ),
+            ],
+          ),
+          // Row(
+          //   children: [
+          //     NestedScrollView(
+          //         headerSliverBuilder: (context, bool innerBoxScrolled) {
+          //           return [];
+          //         },
+          //         body: const Center()),
+          //     const SizedBox(
+          //       width: 15,
           //     ),
-          //   ),
-          // ),
-          ,
+          //     const Text('MY CLASS',
+          //         style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold)),
+          //   ],
+          const SizedBox(
+            height: 30,
+          ),
           Row(
             children: const [
               SizedBox(
-                width: 15,
+                width: 30,
               ),
               Text('MY CLASS',
                   style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold)),
@@ -221,6 +231,52 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
         ],
+      ),
+    );
+  }
+
+  serviceContainer(String name, String image, int index) {
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 400),
+      padding: const EdgeInsets.all(8),
+      decoration: BoxDecoration(
+          borderRadius: const BorderRadius.all(Radius.circular(15)),
+          border: Border.all(
+              width: 1,
+              color: selectervice == index
+                  ? Colors.blue
+                  : const Color.fromARGB(138, 158, 158, 158)),
+          color: selectervice == index
+              ? const Color.fromARGB(255, 255, 255, 255)
+              : const Color.fromARGB(255, 255, 255, 255)),
+      child: InkWell(
+        onTap: () {
+          if (index == 0) {
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => const veruthe()));
+          } else if (index == 1) {
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => const veruthe()));
+          } else {
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => const veruthe()));
+          }
+        },
+        child: Column(
+          children: [
+            Container(
+              height: 55,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage(image), fit: BoxFit.cover)),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Positioned(top: 70, child: Text(name))
+          ],
+        ),
       ),
     );
   }

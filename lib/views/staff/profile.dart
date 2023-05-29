@@ -123,7 +123,7 @@ class _MyProfileState extends State<MyProfile> {
                       const SizedBox(
                         height: 5,
                       ),
-                      const Text('9995513825',
+                       Text(phone,
                           style: TextStyle(
                               fontWeight: FontWeight.w500, fontSize: 11)),
                       const SizedBox(

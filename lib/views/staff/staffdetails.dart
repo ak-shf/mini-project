@@ -22,6 +22,7 @@ class _StaffDetailsState extends State<StaffDetails> {
   TextEditingController email1controller = TextEditingController();
   TextEditingController addresscontroller = TextEditingController();
   TextEditingController namecontroller = TextEditingController();
+  String image = "";
   // String? email=email1controller.text;
 
   void selectImage() async {
@@ -53,6 +54,9 @@ class _StaffDetailsState extends State<StaffDetails> {
       namecontroller.text = (snap.data() as Map<String, dynamic>)['name'];
       addresscontroller.text = (snap.data() as Map<String, dynamic>)['address'];
       phonecontroller.text = (snap.data() as Map<String, dynamic>)['mobile'];
+      datecontroller.text =
+          (snap.data() as Map<String, dynamic>)['dateofbirth'];
+      image = (snap.data() as Map<String, dynamic>)['imageLink'];
     });
   }
 
@@ -86,14 +90,13 @@ class _StaffDetailsState extends State<StaffDetails> {
                         : Container(
                             height: 100,
                             width: 100,
-                            decoration: const BoxDecoration(
+                            decoration: BoxDecoration(
                                 image: DecorationImage(
-                                    image: AssetImage(
-                                        'assets/christopher-campbell-rDEOVtE7vOs-unsplash.jpg'),
+                                    image: NetworkImage(image),
                                     fit: BoxFit.cover),
                                 color: Colors.black,
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(100))),
+                                borderRadius: const BorderRadius.all(
+                                    Radius.circular(100))),
                           ),
                     Positioned(
                         top: 50,
@@ -132,7 +135,7 @@ class _StaffDetailsState extends State<StaffDetails> {
                               color: Color.fromARGB(255, 64, 116, 220)))),
                 ),
                 const SizedBox(
-                  height: 20,  
+                  height: 20,
                 ),
                 TextFormField(
                   controller: email1controller,
@@ -214,7 +217,7 @@ class _StaffDetailsState extends State<StaffDetails> {
                               color: Color.fromARGB(255, 255, 255, 255))),
                       errorBorder: const OutlineInputBorder(
                           borderSide: BorderSide(
-                              color: Color.fromARGB(255, 64, 116, 220))),
+                              color: Color.fromARGB(255, 85, 64, 220))),
                       focusedBorder: const OutlineInputBorder(
                           borderSide: BorderSide(
                               color: Color.fromARGB(255, 64, 116, 220)))),
@@ -262,11 +265,11 @@ class _StaffDetailsState extends State<StaffDetails> {
                           .doc(FirebaseAuth.instance.currentUser!.uid)
                           .update(
                         {
-                          "name": namecontroller.text,
-                          "personalemail": email1controller.text,
+                          "name": namecontroller.text.trim(),
+                          "personalemail": email1controller.text.trim(),
                           "mobile": phonecontroller.text.trim(),
-                          "address": addresscontroller.text,
-                          "dateofbirth": datecontroller.text,
+                          "address": addresscontroller.text.trim(),
+                          "dateofbirth": datecontroller.text.trim(),
                         },
                       );
                       Navigator.push(

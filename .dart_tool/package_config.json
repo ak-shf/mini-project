@@ -8,6 +8,12 @@
       "languageVersion": "2.18"
     },
     {
+      "name": "animate_do",
+      "rootUri": "file:///C:/Users/pacha/AppData/Local/Pub/Cache/hosted/pub.dev/animate_do-3.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "async",
       "rootUri": "file:///C:/Users/pacha/AppData/Local/Pub/Cache/hosted/pub.dev/async-2.10.0",
       "packageUri": "lib/",
@@ -344,7 +350,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-05-24T16:36:41.263055Z",
+  "generated": "2023-05-29T13:53:23.363857Z",
   "generator": "pub",
   "generatorVersion": "2.19.5"
 }
