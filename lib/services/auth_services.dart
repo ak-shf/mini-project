@@ -1,4 +1,5 @@
 import 'dart:typed_data';
+import "package:mini_project/usermodel/modle.dart" as model;
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -39,6 +40,7 @@ class AuthServices {
       {String? email,
       String? password,
       String? role,
+      required int value,
       String? name,
       String? mobile,
       String? address,
@@ -51,18 +53,51 @@ class AuthServices {
         email: email!,
         password: password!,
       );
+      model.Staff staff = model.Staff(
+          email: email,
+          address: address,
+          name: name,
+          mobile: mobile,
+          uid: cred.user?.uid,
+          role: role);
+      model.Parent parent = model.Parent(
+          email: email,
+          address: address,
+          name: name,
+          mobile: mobile,
+          uid: cred.user?.uid,
+          role: role);
+      // model.Admin admin = model.Admin(
+      // email: email,
+      // address: address,
+      // name: name,
+      // mobile: mobile,
+      // uid: cred.user?.uid,
+      // role: role);
+      model.Doctor doctor = model.Doctor(
+          email: email,
+          address: address,
+          name: name,
+          mobile: mobile,
+          uid: cred.user?.uid,
+          role: role);
 
-      await _firestore.collection('users').doc(cred.user!.uid).set({
-        'role': role,
-        'uid': cred.user!.uid,
-        "address": address,
-        "email": email,
-        "mobile": mobile,
-        "name": name,
-        "personalemail": personalemail,
-        "dateofbirth": dateofbirth,
-        "image": image
-      });
+      if (value == 1) {
+        await FirebaseFirestore.instance
+            .collection('staff')
+            .doc(cred.user?.uid)
+            .set(staff.toJson());
+      } else if (value == 2) {
+        await FirebaseFirestore.instance
+            .collection('partners')
+            .doc(cred.user?.uid)
+            .set(parent.toJson());
+      } else {
+        await FirebaseFirestore.instance
+            .collection('doctor')
+            .doc(cred.user?.uid)
+            .set(doctor.toJson());
+      }
 
       res = 'succes ';
     } catch (e) {

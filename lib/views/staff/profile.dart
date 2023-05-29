@@ -27,7 +27,7 @@ class _MyProfileState extends State<MyProfile> {
 
   getname() async {
     DocumentSnapshot snap = await FirebaseFirestore.instance
-        .collection('users')
+        .collection('staff')
         .doc(FirebaseAuth.instance.currentUser!.uid)
         .get();
     setState(() {

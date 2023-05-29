@@ -44,7 +44,7 @@ class _StaffDetailsState extends State<StaffDetails> {
 
   getname() async {
     DocumentSnapshot snap = await FirebaseFirestore.instance
-        .collection('users')
+        .collection('staff')
         .doc(FirebaseAuth.instance.currentUser!.uid)
         .get();
     setState(() {
@@ -132,7 +132,7 @@ class _StaffDetailsState extends State<StaffDetails> {
                               color: Color.fromARGB(255, 64, 116, 220)))),
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 20,  
                 ),
                 TextFormField(
                   controller: email1controller,
@@ -258,7 +258,7 @@ class _StaffDetailsState extends State<StaffDetails> {
                       //   //     .uploadImage("Image Folder", 'Profile', );
                       // } catch (e) {}
                       FirebaseFirestore.instance
-                          .collection('users')
+                          .collection('staff')
                           .doc(FirebaseAuth.instance.currentUser!.uid)
                           .update(
                         {

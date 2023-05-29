@@ -27,7 +27,7 @@ class Storedata {
       String imageUrl =
           await uploadImage('Image Folder', "profile Image", file);
       FirebaseFirestore.instance
-          .collection('users')
+          .collection('staff')
           .doc(FirebaseAuth.instance.currentUser!.uid)
           .update(
         {'imageLink': imageUrl},

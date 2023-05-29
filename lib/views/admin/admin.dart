@@ -10,10 +10,13 @@ class AdminPage extends StatefulWidget {
 }
 
 class _AdminPageState extends State<AdminPage> {
+  bool _isLoading = false;
+  int flag = 1;
   _AdminPageState() {
     valuechoose = selectList[0];
   }
   String? valuechoose;
+
   List selectList = ['STAFF', 'DOCTOR', 'PARENT'];
   @override
   Widget build(BuildContext context) {
@@ -35,14 +38,6 @@ class _AdminPageState extends State<AdminPage> {
             const SizedBox(
               height: 30,
             ),
-            TextFormField(
-              controller: registercontroller,
-              decoration: const InputDecoration(hintText: 'email'),
-            ),
-            TextFormField(
-              controller: passwordcontroller1,
-              decoration: const InputDecoration(hintText: 'password'),
-            ),
             DropdownButtonFormField(
                 value: valuechoose,
                 onTap: () {},
@@ -55,15 +50,46 @@ class _AdminPageState extends State<AdminPage> {
                 onChanged: (value) {
                   setState(() {
                     valuechoose = value as String;
+                    if (value == "STAFF") {
+                      flag = 1;
+                    } else if (value == "PARENT") {
+                      flag = 2;
+                    } else {
+                      flag = 3;
+                    }
                   });
                 }),
+            TextFormField(
+              controller: registercontroller,
+              decoration: const InputDecoration(hintText: 'email'),
+            ),
+            TextFormField(
+              controller: passwordcontroller1,
+              decoration: const InputDecoration(hintText: 'password'),
+            ),
             ElevatedButton(
-                onPressed: () => AuthServices.signup(
+                onPressed: () {
+                  if (!mounted) return;
+                  setState(() {
+                    _isLoading = true;
+                  });
+                  AuthServices.signup(
                       email: registercontroller.text.trim(),
                       password: passwordcontroller1.text.trim(),
                       role: valuechoose.toString(),
-                    ),
-                child: const Text('Register')),
+                      value: flag);
+                  ScaffoldMessenger.of(context)
+                      .showSnackBar(const SnackBar(content: Text('registerd')));
+                  if (!mounted) return;
+                  setState(() {
+                    _isLoading = false;
+                  });
+                },
+                child: _isLoading
+                    ? const Center(
+                        child: CircularProgressIndicator(),
+                      )
+                    : const Text('Register')),
             SizedBox(
               width: 100,
               child: ElevatedButton(
