@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mini_project/views/doctor/doctorcalander.dart';
+import 'package:mini_project/views/calander/calanderview.dart';
 import 'package:mini_project/views/doctor/doctorview.dart';
 
 import 'doctorprofille.dart';
@@ -12,11 +12,7 @@ class DoctorFirst extends StatefulWidget {
 }
 
 class _DoctorFirstState extends State<DoctorFirst> {
-  List pages = [
-    const DoctorHome(),
-    const DoctorCalander(),
-    const DoctorProfile()
-  ];
+  List pages = [const DoctorHome(), const MyHomePage(), const DoctorProfile()];
   int myIndex = 0;
   @override
   Widget build(BuildContext context) {

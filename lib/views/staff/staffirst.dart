@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:mini_project/services/auth_services.dart';
-import 'package:mini_project/views/staff/calander.dart';
+import 'package:mini_project/views/calander/calanderview.dart';
 import 'package:mini_project/views/staff/loginscreen.dart';
 
 import 'package:mini_project/views/staff/staffhome.dart';
@@ -19,7 +19,7 @@ class StaffFirst extends StatefulWidget {
 }
 
 class _StaffFirstState extends State<StaffFirst> {
-  List pages = [const HomeScreen(), const MyCalander(), const MyProfile()];
+  List pages = [const HomeScreen(), const MyHomePage(), const MyProfile()];
   int myIndex = 0;
   String image = "";
   String email = "";

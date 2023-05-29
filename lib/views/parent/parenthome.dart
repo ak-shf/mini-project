@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mini_project/views/parent/parentcalander.dart';
+import 'package:mini_project/views/calander/calanderview.dart';
+
 import 'package:mini_project/views/parent/parentprofile.dart';
 import 'package:mini_project/views/parent/parentview.dart';
 
@@ -11,11 +12,7 @@ class ParentFirst extends StatefulWidget {
 }
 
 class _ParentFirstState extends State<ParentFirst> {
-  List pages = [
-    const ParentView(),
-    const ParentCalander(),
-    const ParentProfile()
-  ];
+  List pages = [const ParentView(), const MyHomePage(), const ParentProfile()];
   int myIndex = 0;
   @override
   Widget build(BuildContext context) {
