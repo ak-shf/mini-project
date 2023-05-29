@@ -94,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
           //         style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold)),
           //   ],
           const SizedBox(
-            height: 30,
+            height: 10,
           ),
           Row(
             children: const [
@@ -237,15 +237,26 @@ class _HomeScreenState extends State<HomeScreen> {
 
   serviceContainer(String name, String image, int index) {
     return AnimatedContainer(
-      duration: const Duration(milliseconds: 400),
+      duration: const Duration(milliseconds: 200),
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+
+              spreadRadius: selectervice == index ? 1 : 0,
+              blurRadius: selectervice == index ? 2 : 0,
+              offset: selectervice == index
+                  ? const Offset(0, 3)
+                  : const Offset(0, 0), // changes position of shadow
+            ),
+          ],
           borderRadius: const BorderRadius.all(Radius.circular(15)),
           border: Border.all(
-              width: 1,
+              width: 2,
               color: selectervice == index
                   ? Colors.blue
-                  : const Color.fromARGB(138, 158, 158, 158)),
+                  : const Color.fromARGB(138, 182, 172, 172)),
           color: selectervice == index
               ? const Color.fromARGB(255, 255, 255, 255)
               : const Color.fromARGB(255, 255, 255, 255)),

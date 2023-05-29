@@ -14,6 +14,7 @@ class _MyCalanderState extends State<MyCalander> {
   final TextEditingController _descontroller = TextEditingController();
   Map<String, List> mySelectedEvent = {};
   CalendarFormat format = CalendarFormat.month;
+  
   DateTime today = DateTime.now();
   DateTime selecteDay = DateTime.now();
   DateTime focusedDay = DateTime.now();
@@ -128,6 +129,7 @@ class _MyCalanderState extends State<MyCalander> {
           children: [
             TableCalendar(
               eventLoader: _listofMethod,
+              
               selectedDayPredicate: (day) => isSameDay(day, today),
               firstDay: DateTime.utc(2010, 10, 16),
               lastDay: DateTime.utc(2030, 3, 14),
@@ -150,7 +152,7 @@ class _MyCalanderState extends State<MyCalander> {
                 selectedTextStyle:
                     TextStyle(color: Color.fromARGB(255, 203, 18, 18)),
                 todayDecoration: BoxDecoration(
-                  color: Color.fromARGB(255, 40, 34, 42),
+                  color: Color.fromARGB(255, 85, 111, 227),
                   shape: BoxShape.circle,
                 ),
                 weekendDecoration: BoxDecoration(
@@ -166,7 +168,7 @@ class _MyCalanderState extends State<MyCalander> {
                     shape: BoxShape.rectangle,
                     borderRadius: BorderRadius.circular(15),
                     border: Border.all(
-                      color: Colors.black,
+                      color: const Color.fromARGB(255, 0, 0, 0),
                     ),
                     color: const Color.fromARGB(255, 219, 215, 220),
                   ),
