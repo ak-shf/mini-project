@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:mini_project/resources/store.dart';
+import 'package:mini_project/services/storage.dart';
 import 'package:mini_project/views/staff/staffirst.dart';
 import 'package:mini_project/resources/utils.dart';
 
@@ -16,6 +17,7 @@ class StaffDetails extends StatefulWidget {
 }
 
 class _StaffDetailsState extends State<StaffDetails> {
+  final SecureStorage secureStorage = SecureStorage();
   Uint8List? _image;
   TextEditingController datecontroller = TextEditingController();
   TextEditingController phonecontroller = TextEditingController();
@@ -63,7 +65,6 @@ class _StaffDetailsState extends State<StaffDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(left: 30.0, right: 30),
@@ -257,6 +258,9 @@ class _StaffDetailsState extends State<StaffDetails> {
                     ),
                     onPressed: () {
                       saveprofile();
+                      secureStorage.writeSecureData(
+                          'uploadStaff', namecontroller.toString());
+
                       // try {
                       //   // String imageUrl=await Storedata()
                       //   //     .uploadImage("Image Folder", 'Profile', );

@@ -50,12 +50,12 @@ class _HomeScreenState extends State<HomeScreen> {
       //     SpeedDialChild(child: const Icon(Icons.person_4), label: 'My Profile')
       //   ],
       // ),
-     
+
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(
-            height: 20,
+            height: 40,
           ),
           Column(
             children: [
@@ -93,7 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
           //         style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold)),
           //   ],
           const SizedBox(
-            height: 10,
+            height: 20,
           ),
           Row(
             children: const [

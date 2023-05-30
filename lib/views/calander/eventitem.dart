@@ -14,17 +14,27 @@ class EventItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(
-        event.title.toString(),
-      ),
-      subtitle: Text(
-        event.date.toString(),
-      ),
-      onTap: onTap,
-      trailing: IconButton(
-        icon: const Icon(Icons.delete),
-        onPressed: onDelete,
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        decoration: const BoxDecoration(
+            color: Color.fromARGB(255, 39, 49, 244),
+            borderRadius: BorderRadius.all(Radius.circular(15))),
+        child: ListTile(
+          title: Text(
+            event.title.toString(),
+            style: const TextStyle(color: Colors.white),
+          ),
+          subtitle: Text(
+            event.date.toString(),
+            style: const TextStyle(color: Colors.white),
+          ),
+          onTap: onTap,
+          trailing: IconButton(
+            icon: const Icon(Icons.delete),
+            onPressed: onDelete,
+          ),
+        ),
       ),
     );
   }

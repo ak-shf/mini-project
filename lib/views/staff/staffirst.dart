@@ -4,9 +4,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:mini_project/services/auth_services.dart';
+import 'package:mini_project/services/storage.dart';
 import 'package:mini_project/views/calander/calanderview.dart';
 import 'package:mini_project/views/staff/loginscreen.dart';
-
 import 'package:mini_project/views/staff/staffhome.dart';
 import 'package:mini_project/views/staff/profile.dart';
 
@@ -20,6 +20,7 @@ class StaffFirst extends StatefulWidget {
 }
 
 class _StaffFirstState extends State<StaffFirst> {
+  SecureStorage secureStorage = SecureStorage();
   List pages = [const HomeScreen(), const MyHomePage(), const MyProfile()];
   int myIndex = 0;
   String image = "";
@@ -101,7 +102,9 @@ class _StaffFirstState extends State<StaffFirst> {
               height: 180,
               child: DrawerHeader(
                 padding: EdgeInsets.zero,
-                decoration: const BoxDecoration(color: Colors.black),
+                decoration: const BoxDecoration(
+                  color: Color.fromARGB(255, 39, 49, 244),
+                ),
                 child: Column(
                   children: [
                     const SizedBox(
@@ -188,7 +191,18 @@ class _StaffFirstState extends State<StaffFirst> {
             ListTile(
               title: const Text('LOG OUT'),
               onTap: () async {
-                final res = await AuthServices.signout();
+                final res = await AuthServices.signout().whenComplete(() {
+                  // secureStorage.deleteSecureData('uploadStaff');
+                  secureStorage.deleteSecureData('email');
+                  secureStorage.deleteSecureData('role');
+                });
+                initState() {
+                  secureStorage.deleteSecureData('email');
+                  secureStorage.deleteSecureData('email');
+                  secureStorage.deleteSecureData('role');
+                  super.initState();
+                }
+
                 if (res == null) {
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
                       builder: (context) => const SelectionPage()));

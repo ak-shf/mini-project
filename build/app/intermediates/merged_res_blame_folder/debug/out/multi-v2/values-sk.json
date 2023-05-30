@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.mini_project.app-mergeDebugResources-25:/values-sk/values-sk.xml",
+            "outputFile": "com.example.mini_project.app-mergeDebugResources-26:/values-sk/values-sk.xml",
             "map": [
                 {
                     "source": "C:\\Users\\pacha\\.gradle\\caches\\transforms-3\\b171ede08930c7f9cd0bd4323c11e8cb\\transformed\\jetified-ucrop-2.2.8\\res\\values-sk\\values-sk.xml",

@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:mini_project/services/auth_services.dart';
+import 'package:mini_project/services/storage.dart';
 import 'package:mini_project/views/admin/admin.dart';
 import 'package:mini_project/views/doctor/doctorhome.dart';
 import 'package:mini_project/views/parent/parenthome.dart';
 import 'package:mini_project/views/staff/staffdetails.dart';
+import 'package:mini_project/views/staff/staffirst.dart';
+
+String? finalupdate;
 
 class SelectionPage extends StatefulWidget {
   const SelectionPage({super.key});
@@ -13,12 +17,22 @@ class SelectionPage extends StatefulWidget {
 }
 
 class _SelectionPageState extends State<SelectionPage> {
+  SecureStorage secureStorage = SecureStorage();
   bool isHidepassword = true;
   bool _isLoading = false;
   TextEditingController emailcontroller = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    secureStorage.readSecureData('uploadStaff').then((value) {
+      finalupdate = value;
+    });
+  }
 
   _loginUser() async {
+    final SecureStorage secureStorage = SecureStorage();
     final email = emailcontroller.text.trim();
     final password = passwordController.text.trim();
 
@@ -45,22 +59,31 @@ class _SelectionPageState extends State<SelectionPage> {
     Widget? page;
     switch (role.toUpperCase()) {
       case 'DOCTOR':
+        secureStorage.writeSecureData('email', email);
+        secureStorage.writeSecureData('role', role);
         page = const DoctorFirst();
         print("IS A DOCTOR");
         break;
       case 'STAFF':
-        page = const StaffDetails();
+        secureStorage.writeSecureData('email', email);
+        secureStorage.writeSecureData('role', role);
+        page = finalupdate == null ?const StaffDetails():const StaffFirst() ;
         print("IS A STAFF");
 
         break;
+
       case 'PARENT':
+        secureStorage.writeSecureData('email', email);
+        secureStorage.writeSecureData('role', role);
         page = const ParentFirst();
         print("IS A PARENT");
 
         break;
       case 'ADMIN':
+        secureStorage.writeSecureData('email', email);
+        secureStorage.writeSecureData('role', role);
         page = const AdminPage();
-        print("IS A DOCTOR");
+        print("IS A ADMIN");
         break;
       default:
         print(role);

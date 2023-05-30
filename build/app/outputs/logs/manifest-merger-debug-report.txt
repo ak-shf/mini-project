@@ -57,6 +57,7 @@ MERGED from [:cloud_firestore] D:\MINI PROJECT\mini_project\build\cloud_firestor
 MERGED from [:firebase_core] D:\MINI PROJECT\mini_project\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-17:12
 MERGED from [:image_picker_android] D:\MINI PROJECT\mini_project\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-21:12
 MERGED from [:flutter_plugin_android_lifecycle] D:\MINI PROJECT\mini_project\build\flutter_plugin_android_lifecycle\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
+MERGED from [:flutter_secure_storage] D:\MINI PROJECT\mini_project\build\flutter_secure_storage\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-11:12
 MERGED from [:image_cropper] D:\MINI PROJECT\mini_project\build\image_cropper\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [com.github.yalantis:ucrop:2.2.8] C:\Users\pacha\.gradle\caches\transforms-3\b171ede08930c7f9cd0bd4323c11e8cb\transformed\jetified-ucrop-2.2.8\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat:1.3.0] C:\Users\pacha\.gradle\caches\transforms-3\b3146e32e2731a930f66308e3c809d24\transformed\appcompat-1.3.0\AndroidManifest.xml:17:1-24:12
@@ -92,6 +93,7 @@ MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\pacha\.gradl
 MERGED from [androidx.customview:customview:1.0.0] C:\Users\pacha\.gradle\caches\transforms-3\f4c2d181f9683c57f8970b9ce7785060\transformed\customview-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.core:core:1.9.0] C:\Users\pacha\.gradle\caches\transforms-3\5f80b20db3afa86c72a9766b008d752d\transformed\core-1.9.0\AndroidManifest.xml:17:1-30:12
 MERGED from [androidx.exifinterface:exifinterface:1.3.6] C:\Users\pacha\.gradle\caches\transforms-3\7c23af03f93fd1a5a0d1f7bffa34a5b1\transformed\exifinterface-1.3.6\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.security:security-crypto:1.1.0-alpha04] C:\Users\pacha\.gradle\caches\transforms-3\721f6ff27a9d2d34046694447893c707\transformed\jetified-security-crypto-1.1.0-alpha04\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\pacha\.gradle\caches\transforms-3\5b75d2e6479f13c5aed7d8001da507c0\transformed\jetified-tracing-1.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\pacha\.gradle\caches\transforms-3\5abdc06e026f2f7b9b89c25dcd7a6d7e\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:17:1-27:12
 MERGED from [androidx.lifecycle:lifecycle-runtime:2.5.1] C:\Users\pacha\.gradle\caches\transforms-3\6f057f4a9981c5e9610d447472908207\transformed\lifecycle-runtime-2.5.1\AndroidManifest.xml:17:1-24:12
@@ -139,6 +141,8 @@ MERGED from [:image_picker_android] D:\MINI PROJECT\mini_project\build\image_pic
 MERGED from [:image_picker_android] D:\MINI PROJECT\mini_project\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:flutter_plugin_android_lifecycle] D:\MINI PROJECT\mini_project\build\flutter_plugin_android_lifecycle\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:flutter_plugin_android_lifecycle] D:\MINI PROJECT\mini_project\build\flutter_plugin_android_lifecycle\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:flutter_secure_storage] D:\MINI PROJECT\mini_project\build\flutter_secure_storage\intermediates\merged_manifest\debug\AndroidManifest.xml:6:5-9:53
+MERGED from [:flutter_secure_storage] D:\MINI PROJECT\mini_project\build\flutter_secure_storage\intermediates\merged_manifest\debug\AndroidManifest.xml:6:5-9:53
 MERGED from [:image_cropper] D:\MINI PROJECT\mini_project\build\image_cropper\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:image_cropper] D:\MINI PROJECT\mini_project\build\image_cropper\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [com.github.yalantis:ucrop:2.2.8] C:\Users\pacha\.gradle\caches\transforms-3\b171ede08930c7f9cd0bd4323c11e8cb\transformed\jetified-ucrop-2.2.8\AndroidManifest.xml:7:5-9:41
@@ -209,6 +213,8 @@ MERGED from [androidx.core:core:1.9.0] C:\Users\pacha\.gradle\caches\transforms-
 MERGED from [androidx.core:core:1.9.0] C:\Users\pacha\.gradle\caches\transforms-3\5f80b20db3afa86c72a9766b008d752d\transformed\core-1.9.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.exifinterface:exifinterface:1.3.6] C:\Users\pacha\.gradle\caches\transforms-3\7c23af03f93fd1a5a0d1f7bffa34a5b1\transformed\exifinterface-1.3.6\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.exifinterface:exifinterface:1.3.6] C:\Users\pacha\.gradle\caches\transforms-3\7c23af03f93fd1a5a0d1f7bffa34a5b1\transformed\exifinterface-1.3.6\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.security:security-crypto:1.1.0-alpha04] C:\Users\pacha\.gradle\caches\transforms-3\721f6ff27a9d2d34046694447893c707\transformed\jetified-security-crypto-1.1.0-alpha04\AndroidManifest.xml:20:5-44
+MERGED from [androidx.security:security-crypto:1.1.0-alpha04] C:\Users\pacha\.gradle\caches\transforms-3\721f6ff27a9d2d34046694447893c707\transformed\jetified-security-crypto-1.1.0-alpha04\AndroidManifest.xml:20:5-44
 MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\pacha\.gradle\caches\transforms-3\5b75d2e6479f13c5aed7d8001da507c0\transformed\jetified-tracing-1.0.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\pacha\.gradle\caches\transforms-3\5b75d2e6479f13c5aed7d8001da507c0\transformed\jetified-tracing-1.0.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\pacha\.gradle\caches\transforms-3\5abdc06e026f2f7b9b89c25dcd7a6d7e\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
@@ -240,7 +246,7 @@ MERGED from [io.grpc:grpc-android:1.52.1] C:\Users\pacha\.gradle\caches\transfor
 INJECTED from D:\MINI PROJECT\mini_project\android\app\src\debug\AndroidManifest.xml
 INJECTED from D:\MINI PROJECT\mini_project\android\app\src\debug\AndroidManifest.xml
 	tools:overrideLibrary
-		ADDED from [com.google.firebase:firebase-auth:21.3.0] C:\Users\pacha\.gradle\caches\transforms-3\58e5e05b4b803d2f200c44bd64fbdce6\transformed\jetified-firebase-auth-21.3.0\AndroidManifest.xml:23:9-61
+		ADDED from [:flutter_secure_storage] D:\MINI PROJECT\mini_project\build\flutter_secure_storage\intermediates\merged_manifest\debug\AndroidManifest.xml:9:9-50
 	android:targetSdkVersion
 		INJECTED from D:\MINI PROJECT\mini_project\android\app\src\main\AndroidManifest.xml
 		INJECTED from D:\MINI PROJECT\mini_project\android\app\src\debug\AndroidManifest.xml

@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mini_project/services/auth_services.dart';
+import 'package:mini_project/services/storage.dart';
 import 'package:mini_project/views/staff/loginscreen.dart';
 
 class MyProfile extends StatefulWidget {
@@ -12,6 +13,7 @@ class MyProfile extends StatefulWidget {
 }
 
 class _MyProfileState extends State<MyProfile> {
+  SecureStorage secureStorage = SecureStorage();
   String email = "";
   String name = "";
   String phone = "";
@@ -49,7 +51,6 @@ class _MyProfileState extends State<MyProfile> {
     double radio = (sizeWidth - 50) / 2;
 
     return Scaffold(
-    
       body: Stack(
         //alignment: Alignment.center,
         children: [
@@ -139,7 +140,16 @@ class _MyProfileState extends State<MyProfile> {
                           ),
                           ElevatedButton(
                             onPressed: () async {
-                              final res = await AuthServices.signout();
+                              final res =
+                                  await AuthServices.signout().whenComplete(() {
+                                secureStorage.deleteSecureData('email');
+                                secureStorage.deleteSecureData('role');
+                              });
+                              initState() {
+                                secureStorage.deleteSecureData('email');
+                                secureStorage.deleteSecureData('role');
+                              }
+
                               if (res == null) {
                                 Navigator.of(context).pushReplacement(
                                     MaterialPageRoute(
