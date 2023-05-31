@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mini_project/services/auth_services.dart';
 import 'package:mini_project/services/storage.dart';
@@ -67,7 +68,9 @@ class _SelectionPageState extends State<SelectionPage> {
       case 'STAFF':
         secureStorage.writeSecureData('email', email);
         secureStorage.writeSecureData('role', role);
-        page = finalupdate == null ?const StaffDetails():const StaffFirst() ;
+        page = finalupdate != FirebaseAuth.instance.currentUser!.uid
+            ? const StaffDetails()
+            : const StaffFirst();
         print("IS A STAFF");
 
         break;
@@ -75,7 +78,7 @@ class _SelectionPageState extends State<SelectionPage> {
       case 'PARENT':
         secureStorage.writeSecureData('email', email);
         secureStorage.writeSecureData('role', role);
-        page = const ParentFirst();
+        page = ParentFirst(uid: FirebaseAuth.instance.currentUser!.uid);
         print("IS A PARENT");
 
         break;

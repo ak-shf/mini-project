@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class Staff {
   String? address;
   String? email;
@@ -21,6 +23,20 @@ class Staff {
       this.image,
       this.dateofbirth,
       this.role});
+  static Staff fromSnap(DocumentSnapshot snap) {
+    var snapshot = snap.data() as Map<String, dynamic>;
+
+    return Staff(
+      name: snapshot["username"],
+      uid: snapshot["uid"],
+      email: snapshot["email"],
+      image: snapshot["imageLink"],
+      dateofbirth: snapshot["dateofbirth"],
+      mobile: snapshot["mobile"],
+      personalemail: snapshot["personalemail"],
+    );
+  }
+
   Map<String, dynamic> toJson() => {
         "address": address,
         "email": email,
@@ -58,6 +74,20 @@ class Doctor {
       this.image,
       this.dateofbirth,
       this.role});
+  static Doctor fromSnap(DocumentSnapshot snap) {
+    var snapshot = snap.data() as Map<String, dynamic>;
+
+    return Doctor(
+      name: snapshot["username"],
+      uid: snapshot["uid"],
+      email: snapshot["email"],
+      image: snapshot["imageLink"],
+      dateofbirth: snapshot["dateofbirth"],
+      mobile: snapshot["mobile"],
+      personalemail: snapshot["personalemail"],
+    );
+  }
+
   Map<String, dynamic> toJson() => {
         "address": address,
         "email": email,
@@ -130,6 +160,20 @@ class Parent {
       this.image,
       this.dateofbirth,
       this.role});
+  static Parent fromSnap(DocumentSnapshot snap) {
+    var snapshot = snap.data() as Map<String, dynamic>;
+
+    return Parent(
+      name: snapshot["username"],
+      uid: snapshot["uid"],
+      email: snapshot["email"],
+      image: snapshot["imageLink"],
+      dateofbirth: snapshot["dateofbirth"],
+      mobile: snapshot["mobile"],
+      personalemail: snapshot["personalemail"],
+    );
+  }
+
   Map<String, dynamic> toJson() => {
         "address": address,
         "email": email,

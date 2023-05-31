@@ -314,6 +314,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "nested",
+      "rootUri": "file:///C:/Users/pacha/AppData/Local/Pub/Cache/hosted/pub.dev/nested-1.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "path",
       "rootUri": "file:///C:/Users/pacha/AppData/Local/Pub/Cache/hosted/pub.dev/path-1.8.2",
       "packageUri": "lib/",
@@ -324,6 +330,12 @@
       "rootUri": "file:///C:/Users/pacha/AppData/Local/Pub/Cache/hosted/pub.dev/plugin_platform_interface-2.1.4",
       "packageUri": "lib/",
       "languageVersion": "2.17"
+    },
+    {
+      "name": "provider",
+      "rootUri": "file:///C:/Users/pacha/AppData/Local/Pub/Cache/hosted/pub.dev/provider-6.0.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "simple_gesture_detector",
@@ -398,7 +410,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-05-30T08:11:14.791004Z",
+  "generated": "2023-05-30T12:23:07.842205Z",
   "generator": "pub",
   "generatorVersion": "2.19.5"
 }

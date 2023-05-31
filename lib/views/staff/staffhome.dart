@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:mini_project/views/staff/search.dart';
 import 'package:mini_project/views/staff/studentlist.dart';
 import 'package:mini_project/views/staff/veruthe.dart';
 
@@ -166,8 +167,10 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (contact) => const StudentList()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (contact) => const SearchScreen()));
             },
           ),
           const SizedBox(

@@ -197,7 +197,7 @@ class _StaffFirstState extends State<StaffFirst> {
                   secureStorage.deleteSecureData('role');
                 });
                 initState() {
-                  secureStorage.deleteSecureData('email');
+                  // secureStorage.deleteSecureData('email');
                   secureStorage.deleteSecureData('email');
                   secureStorage.deleteSecureData('role');
                   super.initState();

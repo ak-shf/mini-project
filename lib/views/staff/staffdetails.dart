@@ -259,7 +259,7 @@ class _StaffDetailsState extends State<StaffDetails> {
                     onPressed: () {
                       saveprofile();
                       secureStorage.writeSecureData(
-                          'uploadStaff', namecontroller.toString());
+                          'uploadStaff', FirebaseAuth.instance.currentUser!.uid);
 
                       // try {
                       //   // String imageUrl=await Storedata()

@@ -28,6 +28,15 @@ class AuthServices {
     return res;
   }
 
+  Future<model.Staff> getUserDetails() async {
+    User currentUser = _firebaseAuth.currentUser!;
+
+    DocumentSnapshot documentSnapshot =
+        await _firestore.collection('staff').doc(currentUser.uid).get();
+
+    return model.Staff.fromSnap(documentSnapshot);
+  }
+
   static signout() async {
     try {
       await _firebaseAuth.signOut();
@@ -105,5 +114,6 @@ class AuthServices {
     }
     return res;
   }
-  calander(){}
+
+  calander() {}
 }
