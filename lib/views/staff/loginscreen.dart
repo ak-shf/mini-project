@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:mini_project/services/auth_services.dart';
 import 'package:mini_project/services/storage.dart';
 import 'package:mini_project/views/admin/admin.dart';
+import 'package:mini_project/views/admin/adminhome.dart';
 import 'package:mini_project/views/doctor/doctorhome.dart';
 import 'package:mini_project/views/parent/parenthome.dart';
-import 'package:mini_project/views/staff/staffdetails.dart';
+import 'package:mini_project/views/staff/detail.dart';
 import 'package:mini_project/views/staff/staffirst.dart';
 
 String? finalupdate;
+String? finalrole;
 
 class SelectionPage extends StatefulWidget {
   const SelectionPage({super.key});
@@ -43,7 +45,7 @@ class _SelectionPageState extends State<SelectionPage> {
     });
 
     final role = await AuthServices.login(email: email, password: password);
-
+    secureStorage.writeSecureData('role', role);
     if (!mounted) return;
     setState(() {
       _isLoading = false;
@@ -62,7 +64,9 @@ class _SelectionPageState extends State<SelectionPage> {
       case 'DOCTOR':
         secureStorage.writeSecureData('email', email);
         secureStorage.writeSecureData('role', role);
-        page = const DoctorFirst();
+        page = finalupdate != FirebaseAuth.instance.currentUser!.uid
+            ? const StaffDetails()
+            : const DoctorFirst();
         print("IS A DOCTOR");
         break;
       case 'STAFF':
@@ -85,7 +89,7 @@ class _SelectionPageState extends State<SelectionPage> {
       case 'ADMIN':
         secureStorage.writeSecureData('email', email);
         secureStorage.writeSecureData('role', role);
-        page = const AdminPage();
+        page = const AdminHome();
         print("IS A ADMIN");
         break;
       default:

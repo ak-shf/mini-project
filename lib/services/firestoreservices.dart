@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 class Firestoreservices {
   final firestore = FirebaseFirestore.instance;
   final auth = FirebaseAuth.instance;
-  getrole() async {
+   getrole() async {
     String res = 'something went wrong';
     try {
       String uid = auth.currentUser!.uid; //login uid get

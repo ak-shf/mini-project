@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mini_project/services/storage.dart';
+import 'package:mini_project/views/admin/adminhome.dart';
+import 'package:mini_project/views/doctor/doctorhome.dart';
 import 'package:mini_project/views/staff/loginscreen.dart';
 import 'package:mini_project/views/staff/staffirst.dart';
 
@@ -27,10 +29,10 @@ class _SplashScreenState extends State<SplashScreen> {
           MaterialPageRoute(builder: (context) => const StaffFirst()));
     } else if (finalRole.toString() == 'ADMIN' && finalEmail != null) {
       Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const StaffFirst()));
+          MaterialPageRoute(builder: (context) => const AdminHome()));
     } else if (finalRole.toString() == 'DOCTOR' && finalEmail != null) {
       Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const StaffFirst()));
+          MaterialPageRoute(builder: (context) => const DoctorFirst()));
     } else if (finalRole.toString() == 'PARENT' && finalEmail != null) {
       Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (context) => const StaffFirst()));

@@ -50,6 +50,7 @@ class AuthServices {
       String? password,
       String? role,
       required int value,
+      String? id,
       String? name,
       String? mobile,
       String? address,
@@ -64,6 +65,7 @@ class AuthServices {
       );
       model.Staff staff = model.Staff(
           email: email,
+          id: id,
           address: address,
           name: name,
           mobile: mobile,
@@ -75,6 +77,7 @@ class AuthServices {
           name: name,
           mobile: mobile,
           uid: cred.user?.uid,
+          id: id,
           role: role);
       // model.Admin admin = model.Admin(
       // email: email,
@@ -88,6 +91,7 @@ class AuthServices {
           address: address,
           name: name,
           mobile: mobile,
+          id: id,
           uid: cred.user?.uid,
           role: role);
 
@@ -115,5 +119,25 @@ class AuthServices {
     return res;
   }
 
-  calander() {}
+  Future<String> currentuser() async {
+    String roles = await firestoreservices.getrole();
+    print(roles);
+    return roles;
+  }
+
+  static Future<String> deleteuser(
+      {required String email, required String password}) async {
+    String res = "something went wrong";
+    try {
+      UserCredential cred = await _firebaseAuth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      final role = _firebaseAuth.currentUser!.uid;
+      res = role;
+    } catch (e) {
+      res = e.toString();
+    }
+    return res;
+  }
 }

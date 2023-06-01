@@ -6,6 +6,7 @@ class Staff {
   String? mobile;
   String? name;
   String? uid;
+  String? id;
   String? image;
   String? personalemail;
   String? dateofbirth;
@@ -19,6 +20,7 @@ class Staff {
       this.personalemail,
       this.mobile,
       this.name,
+      this.id,
       this.uid,
       this.image,
       this.dateofbirth,
@@ -33,6 +35,7 @@ class Staff {
       image: snapshot["imageLink"],
       dateofbirth: snapshot["dateofbirth"],
       mobile: snapshot["mobile"],
+      id: snapshot['id'],
       personalemail: snapshot["personalemail"],
     );
   }
@@ -43,8 +46,9 @@ class Staff {
         "personalemail": personalemail,
         "mobile": mobile,
         "name": name,
+        "id": id,
         "uid": uid,
-        "ImageLink": image,
+        "imageLink": image,
         'role': role,
         "dateofdirth": dateofbirth
         //'services':services
@@ -58,6 +62,7 @@ class Doctor {
   String? name;
   String? uid;
   String? image;
+  String? id;
   String? personalemail;
   String? dateofbirth;
 
@@ -70,6 +75,7 @@ class Doctor {
       this.personalemail,
       this.mobile,
       this.name,
+      this.id,
       this.uid,
       this.image,
       this.dateofbirth,
@@ -84,6 +90,7 @@ class Doctor {
       image: snapshot["imageLink"],
       dateofbirth: snapshot["dateofbirth"],
       mobile: snapshot["mobile"],
+      id: snapshot["id"],
       personalemail: snapshot["personalemail"],
     );
   }
@@ -95,9 +102,11 @@ class Doctor {
         "mobile": mobile,
         "name": name,
         "uid": uid,
-        "ImageLink": image,
+        "id": id,
+        "imageLink": image,
         'role': role,
-        "dateofdirth": dateofbirth
+        "dateofbirth": dateofbirth,
+
         //'services':services
       };
 }
@@ -142,6 +151,7 @@ class Parent {
   String? email;
   String? mobile;
   String? name;
+  String? id;
   String? uid;
   String? image;
   String? personalemail;
@@ -157,6 +167,7 @@ class Parent {
       this.mobile,
       this.name,
       this.uid,
+      this.id,
       this.image,
       this.dateofbirth,
       this.role});
@@ -166,6 +177,7 @@ class Parent {
     return Parent(
       name: snapshot["username"],
       uid: snapshot["uid"],
+      id: snapshot["id"],
       email: snapshot["email"],
       image: snapshot["imageLink"],
       dateofbirth: snapshot["dateofbirth"],
@@ -181,7 +193,8 @@ class Parent {
         "mobile": mobile,
         "name": name,
         "uid": uid,
-        "ImageLink": image,
+        "id":id,
+        "imageLink": image,
         'role': role,
         "dateofdirth": dateofbirth
         //'services':services

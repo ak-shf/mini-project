@@ -5,8 +5,8 @@ import 'package:mini_project/views/parent/parentprofile.dart';
 import 'package:mini_project/views/parent/parentview.dart';
 
 class ParentFirst extends StatefulWidget {
-  final String uid;
-  const ParentFirst({super.key, required this.uid});
+  final String? uid;
+  const ParentFirst({super.key,this.uid});
 
   @override
   State<ParentFirst> createState() => _ParentFirstState();
