@@ -2,8 +2,9 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:mini_project/services/auth_services.dart';
 import 'package:mini_project/services/storage.dart';
-import 'package:mini_project/views/admin/adddetails.dart';
+
 import 'package:mini_project/views/admin/admin.dart';
+import 'package:mini_project/views/admin/adminstudentlist.dart';
 import 'package:mini_project/views/admin/deleteuser/deleteuser.dart';
 
 import 'package:mini_project/views/staff/loginscreen.dart';
@@ -153,7 +154,7 @@ class _AdminHomeState extends State<AdminHome> {
                 MaterialPageRoute(builder: (context) => const DeleteUser()));
           } else {
             Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const AddDetails()));
+                MaterialPageRoute(builder: (context) => const AdminSearch()));
           }
         },
         child: Column(

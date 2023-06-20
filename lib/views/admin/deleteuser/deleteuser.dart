@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mini_project/services/auth_services.dart';
 import 'package:mini_project/services/storage.dart';
@@ -13,12 +14,12 @@ class DeleteUser extends StatefulWidget {
 class _DeleteUserState extends State<DeleteUser> {
   bool _isLoading = false;
   int flag = 1;
-  _DeleteUserState() {
-    valuechoose = selectList[0];
-  }
+  // _DeleteUserState() {
+  //   valuechoose = selectList[0];
+  // }
   String? valuechoose;
 
-  List selectList = ['STAFF', 'DOCTOR', 'PARENT'];
+  List selectList = ['STAFF', 'DOCTOR', 'STUDENT'];
   @override
   Widget build(BuildContext context) {
     SecureStorage secureStorage = SecureStorage();
@@ -41,6 +42,7 @@ class _DeleteUserState extends State<DeleteUser> {
             DropdownButtonFormField(
                 value: valuechoose,
                 onTap: () {},
+                hint: const Text('select'),
                 items: selectList
                     .map((e) => DropdownMenuItem(
                           value: e,
@@ -52,7 +54,7 @@ class _DeleteUserState extends State<DeleteUser> {
                     valuechoose = value as String;
                     if (value == "STAFF") {
                       flag = 1;
-                    } else if (value == "PARENT") {
+                    } else if (value == "STUDENT") {
                       flag = 2;
                     } else {
                       flag = 3;
@@ -119,12 +121,13 @@ class _DeleteUserState extends State<DeleteUser> {
                                     .collection('staff')
                                     .doc(res)
                                     .delete();
+                                FirebaseAuth.instance.currentUser!.delete();
                               },
                               child: const Text('Delete')),
                         ],
                       );
                     });
-              } else if (valuechoose == "PARENT") {
+              } else if (valuechoose == "STUDENT") {
                 // ignore: use_build_context_synchronously
                 showDialog(
                     context: context,
@@ -144,7 +147,7 @@ class _DeleteUserState extends State<DeleteUser> {
                               onPressed: () async {
                                 Navigator.pop(context);
                                 await FirebaseFirestore.instance
-                                    .collection('parent')
+                                    .collection('student')
                                     .doc(res)
                                     .delete();
                               },
@@ -172,7 +175,7 @@ class _DeleteUserState extends State<DeleteUser> {
                               onPressed: () async {
                                 Navigator.pop(context);
                                 await FirebaseFirestore.instance
-                                    .collection('parent')
+                                    .collection('student')
                                     .doc(res)
                                     .delete();
                               },

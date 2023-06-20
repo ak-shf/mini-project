@@ -32,10 +32,10 @@ class _SearchScreenState extends State<SearchScreen> {
         ),
         body: FutureBuilder(
           future: FirebaseFirestore.instance
-              .collection('staff')
+              .collection('student')
               .where(
                 'name',
-                isGreaterThanOrEqualTo: searchController.text,
+                isGreaterThanOrEqualTo: searchController.text.toUpperCase(),
               )
               .get(),
           builder: (context, snapshot) {
@@ -56,14 +56,25 @@ class _SearchScreenState extends State<SearchScreen> {
                     ),
                   ),
                   child: ListTile(
-                    leading: CircleAvatar(
-                      backgroundImage: NetworkImage(
-                        (snapshot.data! as dynamic).docs[index]['imageLink'],
-                      ),
-                      radius: 16,
-                    ),
+                    leading: (snapshot.data! as dynamic).docs[index]
+                                ['imageLink'] ==
+                            null
+                        ? const CircleAvatar(
+                            backgroundImage: NetworkImage('image/png;base64,'),
+                            radius: 16,
+                          )
+                        : CircleAvatar(
+                            backgroundImage: NetworkImage(
+                              (snapshot.data! as dynamic).docs[index]
+                                  ['imageLink'],
+                            ),
+                            radius: 16,
+                          ),
                     title: Text(
-                      (snapshot.data! as dynamic).docs[index]['name'],
+                      (snapshot.data! as dynamic)
+                          .docs[index]['name']
+                          .toString()
+                          .toUpperCase(),
                     ),
                   ),
                 );

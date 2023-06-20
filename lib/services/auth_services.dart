@@ -71,7 +71,7 @@ class AuthServices {
           mobile: mobile,
           uid: cred.user?.uid,
           role: role);
-      model.Parent parent = model.Parent(
+      model.Student student = model.Student(
           email: email,
           address: address,
           name: name,
@@ -102,9 +102,9 @@ class AuthServices {
             .set(staff.toJson());
       } else if (value == 2) {
         await FirebaseFirestore.instance
-            .collection('partners')
+            .collection('student')
             .doc(cred.user?.uid)
-            .set(parent.toJson());
+            .set(student.toJson());
       } else {
         await FirebaseFirestore.instance
             .collection('doctor')

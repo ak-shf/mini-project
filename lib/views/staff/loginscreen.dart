@@ -2,15 +2,15 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mini_project/services/auth_services.dart';
 import 'package:mini_project/services/storage.dart';
-import 'package:mini_project/views/admin/admin.dart';
 import 'package:mini_project/views/admin/adminhome.dart';
+import 'package:mini_project/views/doctor/doctordetails.dart';
 import 'package:mini_project/views/doctor/doctorhome.dart';
 import 'package:mini_project/views/parent/parenthome.dart';
 import 'package:mini_project/views/staff/detail.dart';
 import 'package:mini_project/views/staff/staffirst.dart';
 
 String? finalupdate;
-String? finalrole;
+
 
 class SelectionPage extends StatefulWidget {
   const SelectionPage({super.key});
@@ -53,7 +53,7 @@ class _SelectionPageState extends State<SelectionPage> {
     if (role != "ADMIN" &&
         role != "DOCTOR" &&
         role != "STAFF" &&
-        role != "PARENT") {
+        role != "STUDENT") {
       ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('invalid username and password')));
       return;
@@ -65,7 +65,7 @@ class _SelectionPageState extends State<SelectionPage> {
         secureStorage.writeSecureData('email', email);
         secureStorage.writeSecureData('role', role);
         page = finalupdate != FirebaseAuth.instance.currentUser!.uid
-            ? const StaffDetails()
+            ? const DoctorDetais()
             : const DoctorFirst();
         print("IS A DOCTOR");
         break;
@@ -79,11 +79,11 @@ class _SelectionPageState extends State<SelectionPage> {
 
         break;
 
-      case 'PARENT':
+      case 'STUDENT':
         secureStorage.writeSecureData('email', email);
         secureStorage.writeSecureData('role', role);
         page = ParentFirst(uid: FirebaseAuth.instance.currentUser!.uid);
-        print("IS A PARENT");
+        print("IS A STUDENT");
 
         break;
       case 'ADMIN':

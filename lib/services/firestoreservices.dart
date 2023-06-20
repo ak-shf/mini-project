@@ -4,12 +4,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 class Firestoreservices {
   final firestore = FirebaseFirestore.instance;
   final auth = FirebaseAuth.instance;
-   getrole() async {
+  getrole() async {
     String res = 'something went wrong';
     try {
       String uid = auth.currentUser!.uid; //login uid get
       final data = await firestore.collection('staff').doc(uid).get();
-      final data1 = await firestore.collection('parent').doc(uid).get();
+      final data1 = await firestore.collection('student').doc(uid).get();
       final data2 = await firestore.collection('doctor').doc(uid).get();
       final data3 = await firestore.collection('users').doc(uid).get();
       if (data.data() != null) {

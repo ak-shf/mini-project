@@ -6,8 +6,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:mini_project/resources/store.dart';
 import 'package:mini_project/services/storage.dart';
-import 'package:mini_project/views/doctor/doctorhome.dart';
-import 'package:mini_project/views/splash_screen.dart';
 import 'package:mini_project/views/staff/staffirst.dart';
 import 'package:mini_project/resources/utils.dart';
 
@@ -45,32 +43,12 @@ class _StaffDetailsState extends State<StaffDetails> {
   @override
   void initState() {
     // TODO: implement initState
+
     super.initState();
+    getstaff();
 
     secureStorage.readSecureData('role').then((value) {
       finalrole = value;
-    });
-    if (finalRole == 'STAFF') {
-      getstaff();
-    } else if (finalRole == 'DOCTOR') {
-      getdoctor();
-    }
-  }
-
-  getdoctor() async {
-    DocumentSnapshot snap = await FirebaseFirestore.instance
-        .collection('doctor')
-        .doc(FirebaseAuth.instance.currentUser!.uid)
-        .get();
-    setState(() {
-      email1controller.text =
-          (snap.data() as Map<String, dynamic>)['personalemail'];
-      namecontroller.text = (snap.data() as Map<String, dynamic>)['name'];
-      addresscontroller.text = (snap.data() as Map<String, dynamic>)['address'];
-      phonecontroller.text = (snap.data() as Map<String, dynamic>)['mobile'];
-      datecontroller.text =
-          (snap.data() as Map<String, dynamic>)['dateofbirth'];
-      image = (snap.data() as Map<String, dynamic>)['imageLink'];
     });
   }
 
@@ -294,41 +272,23 @@ class _StaffDetailsState extends State<StaffDetails> {
 
                       secureStorage.writeSecureData('uploadStaff',
                           FirebaseAuth.instance.currentUser!.uid);
-                      if (finalrole == 'STAFF') {
-                        FirebaseFirestore.instance
-                            .collection('staff')
-                            .doc(FirebaseAuth.instance.currentUser!.uid)
-                            .update(
-                          {
-                            "name": namecontroller.text.trim(),
-                            "personalemail": email1controller.text.trim(),
-                            "mobile": phonecontroller.text.trim(),
-                            "address": addresscontroller.text.trim(),
-                            "dateofbirth": datecontroller.text.trim(),
-                          },
-                        );
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const StaffFirst()));
-                      } else if (finalrole == "DOCTOR") {
-                        FirebaseFirestore.instance
-                            .collection('doctor')
-                            .doc(FirebaseAuth.instance.currentUser!.uid)
-                            .update(
-                          {
-                            "name": namecontroller.text.trim(),
-                            "personalemail": email1controller.text.trim(),
-                            "mobile": phonecontroller.text.trim(),
-                            "address": addresscontroller.text.trim(),
-                            "dateofbirth": datecontroller.text.trim(),
-                          },
-                        );
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const DoctorFirst()));
-                      }
+
+                      FirebaseFirestore.instance
+                          .collection('staff')
+                          .doc(FirebaseAuth.instance.currentUser!.uid)
+                          .update(
+                        {
+                          "name": namecontroller.text.trim(),
+                          "personalemail": email1controller.text.trim(),
+                          "mobile": phonecontroller.text.trim(),
+                          "address": addresscontroller.text.trim(),
+                          "dateofbirth": datecontroller.text.trim(),
+                        },
+                      );
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const StaffFirst()));
                     },
                     child: Container(
                         height: 40,

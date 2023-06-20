@@ -50,7 +50,7 @@ class Staff {
         "uid": uid,
         "imageLink": image,
         'role': role,
-        "dateofdirth": dateofbirth
+        "dateofbirth": dateofbirth
         //'services':services
       };
 }
@@ -146,7 +146,7 @@ class Doctor {
 //         //'services':services
 //       };
 // }
-class Parent {
+class Student {
   String? address;
   String? email;
   String? mobile;
@@ -160,7 +160,7 @@ class Parent {
   String? role;
   //List<List<String>>?services;
 
-  Parent(
+  Student(
       {this.address,
       this.email,
       this.personalemail,
@@ -171,10 +171,10 @@ class Parent {
       this.image,
       this.dateofbirth,
       this.role});
-  static Parent fromSnap(DocumentSnapshot snap) {
+  static Student fromSnap(DocumentSnapshot snap) {
     var snapshot = snap.data() as Map<String, dynamic>;
 
-    return Parent(
+    return Student(
       name: snapshot["username"],
       uid: snapshot["uid"],
       id: snapshot["id"],
@@ -193,10 +193,10 @@ class Parent {
         "mobile": mobile,
         "name": name,
         "uid": uid,
-        "id":id,
+        "id": id,
         "imageLink": image,
         'role': role,
-        "dateofdirth": dateofbirth
+        "dateofbirth": dateofbirth
         //'services':services
       };
 }

@@ -3,7 +3,6 @@ import "dart:typed_data";
 import "package:cloud_firestore/cloud_firestore.dart";
 import "package:firebase_auth/firebase_auth.dart";
 import "package:firebase_storage/firebase_storage.dart";
-import "package:mini_project/services/storage.dart";
 import "package:mini_project/views/splash_screen.dart";
 
 final FirebaseStorage storage = FirebaseStorage.instance;
@@ -24,7 +23,6 @@ class Storedata {
   }
 
   Future<String> addImage({required Uint8List file}) async {
-    
     try {
 //       secureStorage.readSecureData('role').then((value){
 // Finalrole=value;
@@ -44,6 +42,15 @@ class Storedata {
             await uploadImage('Image Folder', "profile Image", file);
         FirebaseFirestore.instance
             .collection('staff')
+            .doc(FirebaseAuth.instance.currentUser!.uid)
+            .update(
+          {'imageLink': imageUrl},
+        );
+      } else if (finalRole == "ADMIN") {
+        String imageUrl =
+            await uploadImage('Image Folder', "profile Image", file);
+        FirebaseFirestore.instance
+            .collection('student')
             .doc(FirebaseAuth.instance.currentUser!.uid)
             .update(
           {'imageLink': imageUrl},

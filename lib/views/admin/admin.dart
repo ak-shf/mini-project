@@ -12,12 +12,12 @@ class AdminPage extends StatefulWidget {
 class _AdminPageState extends State<AdminPage> {
   bool _isLoading = false;
   int flag = 1;
-  _AdminPageState() {
-    valuechoose = selectList[0];
-  }
+  // _AdminPageState() {
+  //   valuechoose = selectList[0];
+  // }
   String? valuechoose;
 
-  List selectList = ['STAFF', 'DOCTOR', 'PARENT'];
+  List selectList = ['STAFF', 'DOCTOR', 'STUDENT'];
   @override
   Widget build(BuildContext context) {
     SecureStorage secureStorage = SecureStorage();
@@ -40,6 +40,7 @@ class _AdminPageState extends State<AdminPage> {
             DropdownButtonFormField(
                 value: valuechoose,
                 onTap: () {},
+                hint: const Text('select'),
                 items: selectList
                     .map((e) => DropdownMenuItem(
                           value: e,
@@ -51,7 +52,7 @@ class _AdminPageState extends State<AdminPage> {
                     valuechoose = value as String;
                     if (value == "STAFF") {
                       flag = 1;
-                    } else if (value == "PARENT") {
+                    } else if (value == "STUDENT") {
                       flag = 2;
                     } else {
                       flag = 3;
@@ -101,6 +102,7 @@ class _AdminPageState extends State<AdminPage> {
                 _isLoading = true;
               });
               AuthServices.signup(
+                  name: namecontroller.text.trim(),
                   email: registercontroller.text.trim(),
                   password: passwordcontroller1.text.trim(),
                   role: valuechoose.toString(),

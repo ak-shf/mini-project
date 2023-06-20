@@ -33,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
     } else if (finalRole.toString() == 'DOCTOR' && finalEmail != null) {
       Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (context) => const DoctorFirst()));
-    } else if (finalRole.toString() == 'PARENT' && finalEmail != null) {
+    } else if (finalRole.toString() == 'STUDENT' && finalEmail != null) {
       Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (context) => const StaffFirst()));
     }

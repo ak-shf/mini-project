@@ -3,8 +3,9 @@ import 'dart:math';
 
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:mini_project/views/staff/attendence.dart';
+import 'package:mini_project/views/staff/medicalreport.dart';
 import 'package:mini_project/views/staff/search.dart';
-import 'package:mini_project/views/staff/studentlist.dart';
 import 'package:mini_project/views/staff/veruthe.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -176,61 +177,69 @@ class _HomeScreenState extends State<HomeScreen> {
           const SizedBox(
             height: 15,
           ),
-          Row(
-            children: [
-              const SizedBox(
-                width: 30,
-              ),
-              Stack(
-                children: [
-                  Container(
-                    height: 150,
-                    width: 300,
-                    decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(15)),
-                        image: DecorationImage(
-                            image: AssetImage(
-                                'assets/yuriy-kovalev-nN1HSDtKdlw-unsplash.jpg'),
-                            fit: BoxFit.cover)),
-                  ),
-                  Positioned(
-                    top: 100,
-                    child: Container(
-                      height: 50,
+          InkWell(
+             onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (contact) => const Report()));
+            },
+            child: Row(
+              children: [
+                const SizedBox(
+                  width: 30,
+                ),
+                Stack(
+                  children: [
+                    Container(
+                      height: 150,
                       width: 300,
                       decoration: const BoxDecoration(
-                          color: Colors.black,
-                          borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(15),
-                              bottomRight: Radius.circular(15))),
+                          borderRadius: BorderRadius.all(Radius.circular(15)),
+                          image: DecorationImage(
+                              image: AssetImage(
+                                  'assets/yuriy-kovalev-nN1HSDtKdlw-unsplash.jpg'),
+                              fit: BoxFit.cover)),
                     ),
-                  ),
-                  Positioned(
-                    top: 100,
-                    left: 30,
-                    child: Row(
-                      children: [
-                        const Text(
-                          'Medical',
-                          style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white),
-                        ),
-                        IconButton(
-                          onPressed: () {},
-                          icon: const Icon(
-                            Icons.arrow_forward_ios_outlined,
+                    Positioned(
+                      top: 100,
+                      child: Container(
+                        height: 50,
+                        width: 300,
+                        decoration: const BoxDecoration(
+                            color: Colors.black,
+                            borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(15),
+                                bottomRight: Radius.circular(15))),
+                      ),
+                    ),
+                    Positioned(
+                      top: 100,
+                      left: 30,
+                      child: Row(
+                        children: [
+                          const Text(
+                            'Medical',
+                            style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white),
                           ),
-                          color: Colors.white,
-                          iconSize: 15,
-                        )
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            ],
+                          IconButton(
+                            onPressed: () {},
+                            icon: const Icon(
+                              Icons.arrow_forward_ios_outlined,
+                            ),
+                            color: Colors.white,
+                            iconSize: 15,
+                          )
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ],
+            ),
           ),
         ],
       ),
@@ -269,7 +278,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 .push(MaterialPageRoute(builder: (context) => const veruthe()));
           } else if (index == 1) {
             Navigator.of(context)
-                .push(MaterialPageRoute(builder: (context) => const veruthe()));
+                .push(MaterialPageRoute(builder: (context) => AttendancePage()));
           } else {
             Navigator.of(context)
                 .push(MaterialPageRoute(builder: (context) => const veruthe()));
